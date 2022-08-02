@@ -1,0 +1,24 @@
+body{
+    font-family: 'Raleway', sans-serif;
+}
+.navbar{
+    background-color: rgb(220, 90, 20);
+}
+.card-container {
+    
+    display :flex;
+    flex-direction:row;
+    justify-content:center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top : 40px;
+}
+.card-header {
+   background-color:darkcyan;
+   color:antiquewhite;
+}
+.card {
+    border-radius: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin:10px;
+}
