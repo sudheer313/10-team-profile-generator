@@ -1,18 +1,17 @@
-//node modules << fs for file system and inquirer Inquirer is an NPM package that provides 
-//an easy way to capture user input in your Node.js command line interface applications.
+
 const inquirer = require("inquirer");
 const fs = require("fs");
-//team profiles
+
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
-//path to generate the index.html file
+
 const generateHtml = require("./src/generateHtml.js");
 const path = require ('path');
 
-//Collecting the data of manager,engineer and intern and pushing it into an array teamMembers.
-const teamMembers = [];
-//questions array for manager
+
+const team_Members = [];
+
 const managerQuestions = [
   {
     type: "input",
@@ -22,23 +21,23 @@ const managerQuestions = [
   {
     type: "input",
     name: "id",
-    message: "Please enter your employee ID(Required)?",
+    message: "Please enter  employee ID(Required)?",
   },
   {
     type: "input",
     name: "emailaddress",
-    message: "Please enter your email address(Required)?",
+    message: "Please enter  email address(Required)?",
   },
   {
     type: "input",
     name: "office",
-    message: "Please enter your office number(Required)?",
+    message: "Please enter  office number(Required)?",
   },
   {
     type: "list",
     name: "addEmployee",
     message: "Who would you like to add next?",
-    choices: ['Engineer','Intern','finish building the team'],
+    choices: ['Engineer','Intern','Complete building the team'],
   }
 ];
 //questions array for engineer
@@ -46,31 +45,31 @@ const engineerQuestions = [
     {
       type: "input",
       name: "name",
-      message: "Please enter your name(Required)?",
+      message: "Please enter  name(Required)?",
     },
     {
       type: "input",
       name: "id",
-      message: "Please enter your employee ID(Required)?",
+      message: "Please enter  employee ID(Required)?",
     },
     {
       type: "input",
       name: "emailaddress",
-      message: "Please enter your email address(Required)?",
+      message: "Please enter your  address(Required)?",
     },
     {
       type: "input",
       name: "github",
-      message: "Please enter your github username(Required)?",
+      message: "Please enter github username(Required)?",
     },
     {
       type: "list",
       name: "addEmployee",
       message: "Who would you like to add next(Required)?",
-      choices: ['Engineer','Intern','finish building the team'],
+      choices: ['Engineer','Intern','complete building the team'],
     }
   ];
-  //questions array for intern
+  
 const internQuestions = [
     {
       type: "input",
@@ -109,7 +108,7 @@ function addManager() {
           managerResponse.emailaddress,
           managerResponse.office,
       );
-      teamMembers.push(manager);
+      team_Members.push(manager);
       switch (managerResponse.addEmployee){
         case 'Engineer':
             addEngineer();
@@ -118,7 +117,7 @@ function addManager() {
             addIntern();
             break;
         default : 
-        return writeToFile(teamMembers); //default is executed when none of the cases match the evaluated expression.      
+        return writeToFile(team_Members); //default is executed when none of the cases match the evaluated expression.      
       }
     });
   }
@@ -131,7 +130,7 @@ function addEngineer() {
         engineerResponse.emailaddress,
         engineerResponse.github
     );
-    teamMembers.push(engineer);
+    team_Members.push(engineer);
     switch (engineerResponse.addEmployee){
         case 'Engineer':
            addEngineer();
@@ -140,7 +139,7 @@ function addEngineer() {
             addIntern();
             break;
         default : 
-        return writeToFile(teamMembers);       
+        return writeToFile(team_Members);       
 
       }
   });
@@ -153,7 +152,7 @@ function addIntern() {
         internResponse.emailaddress,
         internResponse.school
     );
-    teamMembers.push(intern);
+    team_Members.push(intern);
     switch (internResponse.addEmployee){
         case 'Engineer':
            addEngineer();
@@ -162,12 +161,12 @@ function addIntern() {
             addIntern();
             break;
         default : 
-        return writeToFile(teamMembers);    
+        return writeToFile(team_Members);    
       }
   });
 }
- addManager();//call addManager function
- //function to write to file 
+ addManager();
+ 
 function writeToFile(data) {
 fs.writeFile('./dist/index.html', generateHtml(data),'utf-8',(err) =>{
   if (err)
