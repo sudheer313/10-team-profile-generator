@@ -7,6 +7,7 @@ const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 
 const generateHtml = require("./src/generateHtml.js");
+
 const path = require ('path');
 
 
@@ -16,57 +17,57 @@ const managerQuestions = [
   {
     type: "input",
     name: "name",
-    message: "Please enter your name?(Required)",
+    message: "Please enter your name?(*)",
   },
   {
     type: "input",
     name: "id",
-    message: "Please enter  employee ID(Required)?",
+    message: "Please enter  employee ID(*)?",
   },
   {
     type: "input",
     name: "emailaddress",
-    message: "Please enter  email address(Required)?",
+    message: "Please enter  email address(*)?",
   },
   {
     type: "input",
     name: "office",
-    message: "Please enter  office number(Required)?",
+    message: "Please enter  office number(*)?",
   },
   {
     type: "list",
     name: "addEmployee",
     message: "Who would you like to add next?",
-    choices: ['Engineer','Intern','Complete building the team'],
+    choices: ['Engineer','Intern','Buid Team'],
   }
 ];
-//questions array for engineer
+
 const engineerQuestions = [
     {
       type: "input",
       name: "name",
-      message: "Please enter  name(Required)?",
+      message: "Please enter  name(*)?",
     },
     {
       type: "input",
       name: "id",
-      message: "Please enter  employee ID(Required)?",
+      message: "Please enter  employee ID(*)?",
     },
     {
       type: "input",
       name: "emailaddress",
-      message: "Please enter your  address(Required)?",
+      message: "Please enter your  address(*)?",
     },
     {
       type: "input",
       name: "github",
-      message: "Please enter github username(Required)?",
+      message: "Please enter github username(*)?",
     },
     {
       type: "list",
       name: "addEmployee",
-      message: "Who would you like to add next(Required)?",
-      choices: ['Engineer','Intern','complete building the team'],
+      message: "Who would you like to add next(*)?",
+      choices: ['Engineer','Intern','Buid Team'],
     }
   ];
   
@@ -74,28 +75,28 @@ const internQuestions = [
     {
       type: "input",
       name: "name",
-      message: "Please enter your name(Required)?",
+      message: "Please enter your name(*)?",
     },
     {
       type: "input",
       name: "id",
-      message: "Please enter your employee ID(Required)?",
+      message: "Please enter your employee ID(*)?",
     },
     {
       type: "input",
       name: "emailaddress",
-      message: "Please enter your email address(Required)?",
+      message: "Please enter your email address(*)?",
     },
     {
       type: "input",
       name: "school",
-      message: "Please enter your school name(Required)?",
+      message: "Please enter your school name(*)?",
     },
     {
         type: "list",
         name: "addEmployee",
         message: "Who would you like to add next?",
-        choices: ['Engineer','Intern','finish building the team'],
+        choices: ['Engineer','Intern','Buid Team'],
       }
   ];
   
@@ -117,7 +118,8 @@ function addManager() {
             addIntern();
             break;
         default : 
-        return writeToFile(team_Members); //default is executed when none of the cases match the evaluated expression.      
+        return writeToFile(team_Members); 
+              
       }
     });
   }
