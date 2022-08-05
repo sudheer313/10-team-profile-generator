@@ -12,7 +12,7 @@ const Manager_questions = async () => {
   const managerDetails = await inquirer.prompt([
     {
       type: "input",
-      name: "Name",
+      name: "name",
       message: "Please enter your name?(*)",
     },
     {
@@ -142,12 +142,12 @@ const generateHTML = () =>
   <div class="card-header"><h3>dgvs</h3><i class="fa-solid fa-mug-hot"></i> Manager
   </div>
   <div class="card-body text-dark">
-    <h5 class="card-title">${name}</h5>
+    <h5 class="card-title">${Manager.name}</h5>
     <p class="card-text"></p>
     <ul class="list-group">
-      <li class="list-group-item">Company_Id: ${id}</li>
-      <li class="list-group-item">Email: <a href = "mailto:e-mail">${email}</a></li>
-      <li class="list-group-item">Office_number: ${officeNumber}</li>
+      <li class="list-group-item">Company_Id: ${Manager.id}</li>
+      <li class="list-group-item">Email: <a href = "mailto:e-mail">${Manager.email}</a></li>
+      <li class="list-group-item">Office_number: ${Manager.officeNumber}</li>
     </ul>
   </div>
 </div>
