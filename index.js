@@ -7,11 +7,12 @@ const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 
 const generateHtml = require("./src/generateHtml.js");
-const Manager_questions = () => {
-  return inquirer.prompt([
+const empArray=[];
+const Manager_questions = async () => {
+  const managerDetails = await inquirer.prompt([
     {
       type: "input",
-      name: "name",
+      name: "Name",
       message: "Please enter your name?(*)",
     },
     {
@@ -21,22 +22,26 @@ const Manager_questions = () => {
     },
     {
       type: "input",
-      name: "emailaddress",
+      name: "email",
       message: "Please enter  email address(*)?",
     },
     {
       type: "input",
-      name: "office",
+      name: "officeNumber",
       message: "Please enter  office number(*)?",
     },
     {
       type: "list",
       name: "addEmployee",
       message: "Who would you like to add next?",
-      choices: ['Engineer','Intern','Buid Team'],
+      choices: ['Engineer', 'Intern', 'BuildTeam'],
     }
   ]);
-};
+  const { name, id, email, officeNumber } = managerDetails;
+  const manager = new Manager(name, id, email, officeNumber);
+  empArray.push(manager);
+}
+
 const Engineer_questions = () => {
   return inquirer.prompt([
     {
@@ -59,6 +64,12 @@ const Engineer_questions = () => {
       name: "github",
       message: "Please enter github username(*)?",
     },
+    {
+      type: "list",
+      name: "addEmployee",
+      message: "Who would you like to add next?",
+      choices: ['Engineer','Intern','BuildTeam'],
+    }
   ]);
 };
 
@@ -84,9 +95,16 @@ const intern_questions = () => {
       name: "school",
       message: "Please enter your school name(*)?",
     },
+    {
+      type: "list",
+      name: "addEmployee",
+      message: "Who would you like to add next?",
+      choices: ['Engineer','Intern','BuildTeam'],
+    }
    
   ]);
 };
+
 // Bonus using writeFileSync as a promise
 const init = () => {
   Manager_questions()
@@ -102,7 +120,7 @@ const init = () => {
 
 init();
 
-const generateHTML = ({ name, id, emailaddress, office}) =>
+const generateHTML = () =>
 //console.log(name, location, github, linkedin);
   `<!DOCTYPE html>
 <html lang="en">
@@ -128,8 +146,8 @@ const generateHTML = ({ name, id, emailaddress, office}) =>
     <p class="card-text"></p>
     <ul class="list-group">
       <li class="list-group-item">Company_Id: ${id}</li>
-      <li class="list-group-item">Email: <a href = "mailto:e-mail">${emailaddress}</a></li>
-      <li class="list-group-item">Office_number: ${office}</li>
+      <li class="list-group-item">Email: <a href = "mailto:e-mail">${email}</a></li>
+      <li class="list-group-item">Office_number: ${officeNumber}</li>
     </ul>
   </div>
 </div>
@@ -137,3 +155,5 @@ const generateHTML = ({ name, id, emailaddress, office}) =>
 </html>`;
 
 //referred from https://github.com/ashachakre0906 bootstrap module
+//ask BCS
+
