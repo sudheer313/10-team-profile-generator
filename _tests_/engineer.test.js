@@ -14,13 +14,13 @@ describe("EngineerClass", () => {
     expect(engineer.email_id).toEqual("sachin@gmail.com");
   });
   it("engineer getName should return name", () => {
-    expect(engineer.getName()).toEqual("Sudheer");
+    expect(engineer.getName()).toEqual("Sachin");
   });
   it("engineer get ID should return ID", () => {
-    expect(engineer.getId()).toEqual("007");
+    expect(engineer.getId()).toEqual("010");
   });
   it("engineer getGithub()method should return github ID", () =>{
-    expect(engineer.getGitHub()).toEqual("sudheer313");
+    expect(engineer.getGithub()).toEqual("sudheer313");
 
   })
   it("engineer get role should return role", () => {

@@ -2,7 +2,7 @@ const Intern = require("../lib/Intern");
 const intern = new Intern("Schewag", "006", "Schewag@gmail.com","victoria");
 describe("InternClass", () => {
   it("should assert new intern object from constructor", () => {
-    const intern = new intern(
+    const intern = new Intern(
       "Schewag",
       "006",
       "Schewag@gmail.com",
@@ -27,6 +27,6 @@ describe("InternClass", () => {
     expect(intern.getSchool()).toEqual("victoria");
   });
   it("intern get role should return role", () => {
-    expect(intern.getRole()).toEqual("intern");
+    expect(intern.getRole()).toEqual("Intern");
   });
 });
